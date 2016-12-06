@@ -80,26 +80,28 @@
         </div>
 
 <script type="text/javascript">
-    $("#searchBtn").on("click", function() {
-      var searchedCharacter = $("#characterSearch").val().trim();
+    // Question: What does this code do?
+    $("#addBtn").on("click", function() {
+      var makeReservation = {
+        name: $("#name").val().trim(),
+        number: $("#number").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        uniqueid: $("uniqueid".val().trim)
+      };
 
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
+      // Question: What does this code do??
+      $.post("http://localhost:3000/api/new", makeReservation)
+      .done(function(data) {
         console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#forcePoints").text(data.forcePoints);
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found. ");
-          $("#stats").hide();
-        }
+        alert("Making a reservation...");
       });
+
+      return false;
     });
+
+
+    
   </script>
 </body>
 </html>

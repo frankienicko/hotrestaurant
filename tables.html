@@ -18,7 +18,7 @@
       <h3>Current Reservations and Waiting List</h3>
       <hr>
       <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-home"></span> </button></a>
+      <a href="/"><button type="button" class="btn btn-danger btn-lg" style="background-color: white; border: 1px solid white"><span class="glyphicon glyphicon-home" style="color: black"></span> </button></a>
     </div>
     </div>
     <div class="row">
@@ -77,27 +77,7 @@
 
 
 
-  <script type="text/javascript">
-    // Question: What does this code do?
-    $("#addBtn").on("click", function() {
-      var makeReservation = {
-        name: $("#name").val().trim(),
-        number: $("#number").val().trim(),
-        phone: $("#phone").val().trim(),
-        email: $("#email").val().trim(),
-        uniqueid: $("uniqueid".val().trim)
-      };
 
-      // Question: What does this code do??
-      $.post("http://localhost:3000/api/new", makeReservation)
-      .done(function(data) {
-        console.log(data);
-        alert("Making a reservation...");
-      });
-
-      return false;
-    });
-  </script>
 
 </body>
 </html>
