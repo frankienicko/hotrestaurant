@@ -9,54 +9,61 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 
-/*
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-*/
+
 
 
 // Star Wars Characters (DATA)
 // =============================================================
 var reservations = [{
+  routeName: "reservations",
   name: "",
   phoneNumber: 9999999999,
   email: "",
   uniqueID: ""
-},;
+}];
 
-var waitList = [{
+var waitlist = [{
+  routeName: "waitlist",
   name: "",
   phoneNumber: 9999999999,
   email: "",
   uniqueID: ""
-},;
+}];
 
-/*
+
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
 });
 
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "add.html"));
+app.get("/make", function(req, res) {
+  res.sendFile(path.join(__dirname, "make.html"));
 });
 
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
-  var chosen = req.params.characters;
+
+// Search for all reservations - provides JSON
+app.get("/api/reservations", function(req, res) {
+  var chosen = req.params.reservations;
 
   if (chosen) {
     console.log(chosen);
 
-    for (var i = 0; i < characters.length; i++) {
-      if (chosen === characters[i].routeName) {
-        res.json(characters[i]);
+    for (var i = 0; i < reservations.length; i++) {
+      if (chosen === reservations[i].routeName) {
+        res.json(reservations[i]);
         return;
       }
     }
@@ -64,22 +71,64 @@ app.get("/api/:characters?", function(req, res) {
     res.json(false);
   }
   else {
-    res.json(characters);
+    res.json(reservations);
   }
 });
 
-// Create New Characters - takes in JSON input
-app.post("/api/new", function(req, res) {
-  var newcharacter = req.body;
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+// Search for Specific reservation - provides JSON
+app.get("/api/reservations/:reservations?", function(req, res) {
+  var chosen = req.params.reservations;
 
-  console.log(newcharacter);
+  if (chosen) {
+    console.log(chosen);
 
-  characters.push(newcharacter);
+    for (var i = 0; i < reservations.length; i++) {
+      if (chosen === reservations[i].routeName) {
+        res.json(reservations[i]);
+        return;
+      }
+    }
 
-  res.json(newcharacter);
+    res.json(false);
+  }
+  else {
+    res.json(reservations);
+  }
 });
-*/
+
+// Search for Specific waitlist - provides JSON
+app.get("/api/waitlist/:waitlist?", function(req, res) {
+  var chosen = req.params.waitlist;
+
+  if (chosen) {
+    console.log(chosen);
+
+    for (var i = 0; i < waitlist.length; i++) {
+      if (chosen === waitlist[i].routeName) {
+        res.json(waitlist[i]);
+        return;
+      }
+    }
+
+    res.json(false);
+  }
+  else {
+    res.json(waitlist);
+  }
+});
+
+// // Create New Characters - takes in JSON input
+// app.post("/api/new", function(req, res) {
+//   var newcharacter = req.body;
+//   newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+
+//   console.log(newcharacter);
+
+//   characters.push(newcharacter);
+
+//   res.json(newcharacter);
+// });
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
