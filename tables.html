@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hot Restaurant - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+    <div style="text-align: center;">
+      <h1>Current Reservations and Waiting List</h1>
+      <hr>
+      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Make Reservation</button></a>
+      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Home</button></a>
+    </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Current Reservations</strong></h3>
+          </div>
+          <div class="panel-body">
+           
+              <div class="panel">
+                <label for="">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="">
+              </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Waiting List</strong></h3>
+          </div>
+          <div class="panel-body">
+        
+              <div class="panel">
+                <label for="">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="">
+              </div>
+   
+            
+          </div>
+        </div>
+
+      </div>
+    
+
+  </div>
+
+  <script type="text/javascript">
+    // Question: What does this code do?
+    $("#addBtn").on("click", function() {
+      var makeReservation = {
+        name: $("#name").val().trim(),
+        number: $("#number").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("http://localhost:3000/api/new", makeReservation)
+      .done(function(data) {
+        console.log(data);
+        alert("Making a reservation...");
+      });
+
+      return false;
+    });
+  </script>
+
+</body>
+</html>
