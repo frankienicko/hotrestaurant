@@ -98,17 +98,24 @@ app.get("/api/waitlist/:waitlist?", function(req, res) {
   }
 });
 
-// // Create New Characters - takes in JSON input
-// app.post("/api/new", function(req, res) {
-//   var newcharacter = req.body;
-//   newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+// Create new reservation - takes in JSON input
+app.post("/api/new", function(req, res) {
+  var newReservation = req.body;
+  newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
-//   console.log(newcharacter);
+  console.log(newReservation);
 
-//   characters.push(newcharacter);
-
-//   res.json(newcharacter);
-// });
+  if (reservations.length < 5){
+    reservations.push(newReservation);
+    res.json(newReservation);
+    alert("Your reservation has been created.");
+  } else {
+    waitlist.push(newReservation);
+    res.json(newReservation);
+    alert("Sorry, we're full. We'll have to put you on the waitlist.");
+  }
+  
+});
 
 // Starts the server to begin listening
 // =============================================================
