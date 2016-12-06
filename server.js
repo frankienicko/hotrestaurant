@@ -56,27 +56,6 @@ app.get("/make", function(req, res) {
 });
 
 
-// Search for all reservations - provides JSON
-app.get("/api/reservations", function(req, res) {
-  var chosen = req.params.reservations;
-
-  if (chosen) {
-    console.log(chosen);
-
-    for (var i = 0; i < reservations.length; i++) {
-      if (chosen === reservations[i].routeName) {
-        res.json(reservations[i]);
-        return;
-      }
-    }
-
-    res.json(false);
-  }
-  else {
-    res.json(reservations);
-  }
-});
-
 // Search for Specific reservation - provides JSON
 app.get("/api/reservations/:reservations?", function(req, res) {
   var chosen = req.params.reservations;
