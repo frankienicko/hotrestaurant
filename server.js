@@ -51,7 +51,7 @@ app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-app.get("/make", function(req, res) {
+app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
