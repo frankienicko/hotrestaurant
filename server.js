@@ -22,6 +22,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // =============================================================
 var reservations = [{
   routeName: "reservations",
+  numberPeople: 3,
   name: "",
   phoneNumber: 9999999999,
   email: "",
@@ -30,6 +31,7 @@ var reservations = [{
 
 var waitlist = [{
   routeName: "waitlist",
+  numberPeople: 3,
   name: "",
   phoneNumber: 9999999999,
   email: "",
