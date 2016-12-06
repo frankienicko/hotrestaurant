@@ -9,12 +9,15 @@ var path = require("path");
 var app = express();
 var PORT = 3000;
 
+/*
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+*/
 
+/*
 // Star Wars Characters (DATA)
 // =============================================================
 var characters = [{
@@ -36,7 +39,8 @@ var characters = [{
   age: 55,
   forcePoints: 1350
 }];
-
+*/
+/*
 // Routes
 // =============================================================
 
@@ -81,7 +85,7 @@ app.post("/api/new", function(req, res) {
 
   res.json(newcharacter);
 });
-
+*/
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
