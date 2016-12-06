@@ -17,29 +17,23 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 */
 
-/*
+
 // Star Wars Characters (DATA)
 // =============================================================
-var characters = [{
-  routeName: "yoda",
-  name: "Yoda",
-  role: "Jedi Master",
-  age: 900,
-  forcePoints: 2000
-}, {
-  routeName: "darthmaul",
-  name: "Darth Maul",
-  role: "Sith Lord",
-  age: 200,
-  forcePoints: 1200
-}, {
-  routeName: "obiwankenobi",
-  name: "Obi Wan Kenobi",
-  role: "Jedi Master",
-  age: 55,
-  forcePoints: 1350
-}];
-*/
+var reservations = [{
+  name: "",
+  phoneNumber: 9999999999,
+  email: "",
+  uniqueID: ""
+},;
+
+var waitList = [{
+  name: "",
+  phoneNumber: 9999999999,
+  email: "",
+  uniqueID: ""
+},;
+
 /*
 // Routes
 // =============================================================
